@@ -21,5 +21,24 @@ namespace Models
         }
         #endregion
 
+        #region Surcharge
+        public static bool operator ==(Personne? left, Personne? right)
+        {
+            if (left is null && right is null)
+                return true;
+
+            if (left is null || right is null)
+                return false;
+
+            return left.Prenom == right.Prenom
+                && left.Nom == right.Nom
+                && left.DateNaiss == right.DateNaiss;
+        }
+
+        public static bool operator !=(Personne? left, Personne? right)
+        {
+            return !(left == right);
+        }
+        #endregion
     }
 }

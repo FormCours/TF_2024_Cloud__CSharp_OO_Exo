@@ -46,6 +46,29 @@ namespace Models
 
             _Comptes.Remove(numero);
         }
+
+        public double AvoirDesComptes(Personne titulaire)
+        {
+            // Si on utilise la surchage d'opérateur d'addition entre
+            // deux comptes pour réaliser le traitement, cela complexifie
+            // la traitement de cette méthode ! 
+            //
+            // Simplification possible -> Ajouter un autre opérateur !
+            // L'opérateur d'addition entre un double et un compte :D
+
+            double total = 0;
+
+            foreach(KeyValuePair<string, Courant> kvp in _Comptes)
+            {
+                Courant c = kvp.Value;
+                if (c.Titulaire == titulaire)
+                {
+                    total += c;
+                }
+            }
+
+            return total;
+        }
         #endregion
     }
 }

@@ -66,5 +66,25 @@ namespace Models
             }
         }
         #endregion
+
+        #region Surcharge d'operateur
+        public static double operator +(Courant c1, Courant c2)
+        {
+            double solde1 = c1.Solde > 0 ? c1.Solde : 0;
+            double solde2 = Math.Max(c2.Solde, 0);
+
+            return solde1 + solde2;
+        }
+
+        public static double operator +(double left, Courant rigth)
+        {
+            return left + Math.Max(rigth.Solde, 0);
+        }
+
+        public static double operator +(Courant rigth, double left)
+        {
+            return left + rigth;
+        }
+        #endregion
     }
 }

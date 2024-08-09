@@ -74,3 +74,14 @@ if(temp is not null)
     double s2 = temp.Solde;
     Console.WriteLine($" - Solde final : {s2}");
 }
+Console.WriteLine();
+
+
+//*******************************************************************
+Personne della = new Personne();
+della.Prenom = "Della";
+della.Nom = "Duck";
+della.DateNaiss = new DateTime(1990, 5, 10);
+
+double avoirDella = bdn.AvoirDesComptes(della);
+Console.WriteLine($"Avoir des comptes de \"Della\" : {avoirDella}");
