@@ -86,3 +86,22 @@ della.DateNaiss = new DateTime(1990, 5, 10);
 double avoirDella = bdn.AvoirDesComptes(della);
 Console.WriteLine($"Avoir des comptes de \"Della\" : {avoirDella}");
 
+//*******************************************************************
+
+Epargne e1 = new Epargne();
+e1.Numero = "BE14 2563 5558 1963";
+e1.Depot(100);
+e1.Titulaire = p2;
+
+Console.WriteLine($"Solde sur le e1 {e1.Solde}");
+e1.AppliquerInteret();
+Console.WriteLine($"Solde sur le e1 après interet {e1.Solde}");
+
+Courant c4 = new Courant();
+c4.Numero = "BE14 2263 5348 1964";
+c4.Depot(100);
+c4.Titulaire = p2;
+
+Console.WriteLine($"Solde sur le c4 {c4.Solde}");
+c4.AppliquerInteret();
+Console.WriteLine($"Solde sur le c4 après interet {c4.Solde}");

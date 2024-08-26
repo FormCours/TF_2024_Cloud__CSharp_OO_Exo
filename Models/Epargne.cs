@@ -23,6 +23,11 @@ namespace Models
             base.Retrait(montant);
             DateDernierRetrait = DateTime.Now;
         }
+
+        protected override double CalculInteret()
+        {
+            return Solde * 0.045;
+        }
         #endregion
     }
 }

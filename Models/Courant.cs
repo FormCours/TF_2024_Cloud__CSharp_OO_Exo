@@ -36,6 +36,11 @@ namespace Models
 
             base.Retrait(montant);
         }
+        protected override double CalculInteret()
+        {
+            return (Solde < 0) ? Solde * 0.0975 : Solde * 0.03;
+        }
+
         #endregion
 
         #region Surcharge d'operateur

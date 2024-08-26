@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Compte
+    public abstract class Compte
     {
         #region Champs
         private double _Solde;
@@ -45,6 +45,13 @@ namespace Models
                 throw new ArgumentOutOfRangeException(nameof(montant));
                 // throw new ArgumentOutOfRangeException("montant"));
             }
+        }
+
+        protected abstract double CalculInteret();
+
+        public void AppliquerInteret()
+        {
+            Solde += CalculInteret();
         }
         #endregion
 
