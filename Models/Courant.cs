@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Models
             get { return _LigneDeCredit; }
             private set 
             { 
-                if(value < 0)  { throw new ArgumentException(); }
+                if(value < 0)  { throw new InvalidOperationException(); }
 
                 _LigneDeCredit = value; 
             }
@@ -43,7 +44,7 @@ namespace Models
         {
             if(montant > (Solde + LigneDeCredit))
             {
-                throw new Exception("Vous n'avez pas assez de thune !");
+                throw new SoldeInsuffisantException();
                 // TODO Customiser l'exception =)
             }
 

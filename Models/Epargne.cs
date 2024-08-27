@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace Models
         {
             if (Solde - montant < 0)
             {
-                throw new Exception("Votre compte epargne ne peut pas passer en négatif :o");
+                throw new SoldeInsuffisantException("Votre compte epargne ne peut pas passer en négatif :o");
             }
 
             base.Retrait(montant);
