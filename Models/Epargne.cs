@@ -12,6 +12,15 @@ namespace Models
         public DateTime? DateDernierRetrait { get; private set; }
         #endregion
 
+        #region Constructeurs
+        public Epargne(string numero, Personne titulaire) : base(numero, titulaire)
+        {
+        }
+        public Epargne(string numero, Personne titulaire, double solde) : base (numero, titulaire, solde)
+        {
+        }
+        #endregion
+
         #region Méthodes
         public override void Retrait(double montant)
         {

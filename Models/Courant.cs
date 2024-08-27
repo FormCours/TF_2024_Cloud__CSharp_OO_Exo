@@ -16,12 +16,25 @@ namespace Models
         public double LigneDeCredit
         {
             get { return _LigneDeCredit; }
-            set 
+            private set 
             { 
                 if(value < 0)  { throw new ArgumentException(); }
 
                 _LigneDeCredit = value; 
             }
+        }
+        #endregion
+
+        #region Constructeurs
+        public Courant(string numero, Personne titulaire) : base(numero, titulaire)
+        {
+        }
+        public Courant(string numero, Personne titulaire, double solde) : base(numero, titulaire, solde)
+        {
+        }
+        public Courant(string numero, Personne titulaire, double solde, double ligneDeCredit) : this(numero, titulaire, solde)
+        {
+            LigneDeCredit = ligneDeCredit;
         }
         #endregion
 

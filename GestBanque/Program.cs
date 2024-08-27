@@ -7,16 +7,9 @@ void AfficheDetailCompte(Courant c)
     Console.WriteLine($" - Solde : {c.Solde}");
 }
 
-Personne p1 = new Personne();
-p1.Prenom = "Della";
-p1.Nom = "Duck";
-p1.DateNaiss = new DateTime(1990, 5, 10);
+Personne p1 = new Personne("Della", "Duck", new DateTime(1990, 5, 10));
 
-Courant c1 = new Courant();
-c1.Titulaire = p1;
-c1.Numero = "BE13 1234 5678 1472";
-c1.LigneDeCredit = 1_000;
-c1.Depot(10_000);
+Courant c1 = new Courant("BE13 1234 5678 1472", p1, 10_000, 1_000);
 c1.Depot(0.1);
 c1.Depot(0.2);
 
@@ -36,25 +29,14 @@ bdn.Nom = "Banque des nuages";
 bdn.Ajouter(c1);
 Console.WriteLine("Ajout du compte c1");
 
-Courant c2 = new Courant();
-c2.Numero = "BE13 1234 5678 8532";
-c2.LigneDeCredit = 500;
-c2.Titulaire = p1;
-c2.Depot(1_000);
+Courant c2 = new Courant("BE13 1234 5678 8532", p1, 1_000);
 
 bdn.Ajouter(c2);
 Console.WriteLine("Ajout du compte c2");
 
-Personne p2 = new Personne();
-p2.Prenom = "Balthazar";
-p2.Nom = "Picsou";
-p2.DateNaiss = new DateTime(1966, 12, 3);
+Personne p2 = new Personne("Balthazar", "Picsou", new DateTime(1966, 12, 3));
 
-Courant c3 = new Courant();
-c3.Numero = "BE13 1001 5678 4123";
-c3.LigneDeCredit = 1_000_000;
-c3.Depot(3_102_201_001.42);
-c3.Titulaire = p2;
+Courant c3 = new Courant("BE13 1001 5678 4123", p2, 3_102_201_001.42, 1_000_000);
 
 bdn.Ajouter(c3);
 Console.WriteLine("Ajout du compte c3");
@@ -78,29 +60,20 @@ Console.WriteLine();
 
 
 //*******************************************************************
-Personne della = new Personne();
-della.Prenom = "Della";
-della.Nom = "Duck";
-della.DateNaiss = new DateTime(1990, 5, 10);
+Personne della = new Personne("Della", "Duck", new DateTime(1990, 5, 10));
 
 double avoirDella = bdn.AvoirDesComptes(della);
 Console.WriteLine($"Avoir des comptes de \"Della\" : {avoirDella}");
 
 //*******************************************************************
 
-Epargne e1 = new Epargne();
-e1.Numero = "BE14 2563 5558 1963";
-e1.Depot(100);
-e1.Titulaire = p2;
+Epargne e1 = new Epargne("BE14 2563 5558 1963", p2, 100);
 
 Console.WriteLine($"Solde sur le e1 {e1.Solde}");
 e1.AppliquerInteret();
 Console.WriteLine($"Solde sur le e1 après interet {e1.Solde}");
 
-Courant c4 = new Courant();
-c4.Numero = "BE14 2263 5348 1964";
-c4.Depot(100);
-c4.Titulaire = p2;
+Courant c4 = new Courant("BE14 2263 5348 1964", p2, 100);
 
 Console.WriteLine($"Solde sur le c4 {c4.Solde}");
 c4.AppliquerInteret();

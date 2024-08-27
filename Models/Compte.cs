@@ -13,14 +13,27 @@ namespace Models
         #endregion
 
         #region Props
-        public string Numero { get; set; }
+        public string Numero { get; private set; }
 
         public double Solde
         {
             get { return _Solde; }
             private set { _Solde = Math.Round(value, 2); }
         }
-        public Personne Titulaire { get; set; }
+        public Personne Titulaire { get; private set; }
+        #endregion
+
+        #region constructeurs
+        public Compte(string numero, Personne titulaire)
+        {
+            Numero = numero;
+            Titulaire = titulaire;
+        }
+
+        public Compte(string numero, Personne titulaire, double solde): this (numero, titulaire)
+        {
+            Solde = solde;
+        }
         #endregion
 
         #region Méthodes
