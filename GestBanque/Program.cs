@@ -66,7 +66,7 @@ Console.WriteLine("Depot d'argent sur le compte « BE13 1001 5678 4123 »");
 double s1 = bdn["BE13 1001 5678 4123"]!.Solde;
 Console.WriteLine($" - Solde initial : {s1}");
 
-Courant? temp = bdn["BE13 1001 5678 4123"];
+Courant? temp = (Courant)bdn["BE13 1001 5678 4123"];
 if(temp is not null)
 {
     temp.Depot(5_000_420.01);
