@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public abstract class Compte
+    public abstract class Compte : IBanker, ICustomer
     {
         #region Champs
         private double _Solde;
