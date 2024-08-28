@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Models.Delegate
 {
-    public delegate void PassageEnNegatifDelegate(Compte compte);
+    //public delegate void PassageEnNegatifDelegate(Compte compte);
 }

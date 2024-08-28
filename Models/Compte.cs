@@ -27,7 +27,7 @@ namespace Models
         #endregion
 
         #region Event
-        public event PassageEnNegatifDelegate PassageEnNegatifEvent;
+        public event Action<Compte> PassageEnNegatifEvent;
         #endregion
 
         #region constructeurs
