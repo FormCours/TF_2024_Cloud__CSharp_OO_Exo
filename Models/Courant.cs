@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,13 +43,20 @@ namespace Models
         #region Méthodes
         public override void Retrait(double montant)
         {
-            if(montant > (Solde + LigneDeCredit))
+            double ancienSolde = Solde;            
+
+            if (montant > (Solde + LigneDeCredit))
             {
                 throw new SoldeInsuffisantException();
                 // TODO Customiser l'exception =)
             }
 
             base.Retrait(montant);
+
+            if (ancienSolde >= 0D && Solde < 0D)
+            {
+                DeclencherPassageEnNegatifEvent();
+            }
         }
         protected override double CalculInteret()
         {

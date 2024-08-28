@@ -73,8 +73,12 @@ Console.WriteLine($"Solde sur le e1 {e1.Solde}");
 e1.AppliquerInteret();
 Console.WriteLine($"Solde sur le e1 après interet {e1.Solde}");
 
-Courant c4 = new Courant("BE14 2263 5348 1964", p2, 100);
+Courant c4 = new Courant("BE14 2263 5348 1964", p2, 100, 200);
 
 Console.WriteLine($"Solde sur le c4 {c4.Solde}");
 c4.AppliquerInteret();
 Console.WriteLine($"Solde sur le c4 après interet {c4.Solde}");
+
+bdn.Ajouter(c4);
+c4.Retrait(200);
+c4.Retrait(1);

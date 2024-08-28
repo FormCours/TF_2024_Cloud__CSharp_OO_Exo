@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Models
 {
@@ -35,6 +38,7 @@ namespace Models
                 throw new Exception("Boum !!!");
             }
 
+            compte.PassageEnNegatifEvent += PassageEnNegatifAction;
             _Comptes.Add(compte.Numero, compte);
         }
 
@@ -43,8 +47,13 @@ namespace Models
             // Sénario si pas de compte avec ce numero :
             // [ ] Erreur !
             // [•] On ignore -> il n'y a pas de comptes
+            Compte? compte = this[numero];
+            if (compte is not null)
+            {
+                compte.PassageEnNegatifEvent -= PassageEnNegatifAction;
+                _Comptes.Remove(numero);
+            }
 
-            _Comptes.Remove(numero);
         }
 
         public double AvoirDesComptes(Personne titulaire)
@@ -66,10 +75,13 @@ namespace Models
                     total += c;
                 }
             }
-
             return total;
         }
 
+        public void PassageEnNegatifAction(Compte compte)
+        {
+            Console.WriteLine($"Le compte { compte.Numero } vient de passer en négatif");
+        }
         #endregion
     }
 }

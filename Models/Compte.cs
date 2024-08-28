@@ -1,4 +1,5 @@
-﻿using Models.Exceptions;
+﻿using Models.Delegate;
+using Models.Exceptions;
 using Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,10 @@ namespace Models
             private set { _Solde = Math.Round(value, 2); }
         }
         public Personne Titulaire { get; private set; }
+        #endregion
+
+        #region Event
+        public event PassageEnNegatifDelegate PassageEnNegatifEvent;
         #endregion
 
         #region constructeurs
@@ -67,6 +72,14 @@ namespace Models
         public void AppliquerInteret()
         {
             Solde += CalculInteret();
+        }
+
+        protected void DeclencherPassageEnNegatifEvent()
+        {
+            if (PassageEnNegatifEvent != null)
+            {
+                PassageEnNegatifEvent(this);
+            }
         }
         #endregion
 
